@@ -29,6 +29,13 @@ class Contact {
             this->darkestSecret = darkestSecret;
         }
 
+        std::string fieldFormated(std::string &field) {
+            if (field.length() < 10)
+                return (field);
+            
+            return (field.substr(0, 9).append("."));
+        }
+
         void print() {
             int columnWide = 10;
             int columnsNumber = 4;
@@ -41,11 +48,11 @@ class Contact {
             //
 
             std::cout << std::right << std::setw(columnWide) << this->id << "|"; 
-            std::cout << std::right << std::setw(columnWide) << this->firstName << "|"; 
-            std::cout << std::right << std::setw(columnWide) << this->lastName << "|"; 
-            std::cout << std::right << std::setw(columnWide) << this->nickName << "|"; 
-            std::cout << std::right << std::setw(columnWide) << this->phoneNumber << "|"; 
-            std::cout << std::right << std::setw(columnWide) << this->darkestSecret << "|";
+            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->firstName) << "|"; 
+            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->lastName) << "|"; 
+            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->nickName) << "|"; 
+            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->phoneNumber) << "|"; 
+            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->darkestSecret) << "|";
         }
 };
 
@@ -76,15 +83,30 @@ class PhoneBook {
                 std::cout << "<Empty List>\n";
                 return;
             }
-            std::cout << std::right << std::setw(columnWide) << std::string("ID").substr(0, 9).append() << "|"; 
-            std::cout << std::right << std::setw(columnWide) << "FIRST NAME" << "|"; 
-            std::cout << std::right << std::setw(columnWide) << "LAST NAME" << "|"; 
-            std::cout << std::right << std::setw(columnWide) << "NICK NAME" << "|"; 
-            std::cout << std::right << std::setw(columnWide) << "PHONE NUMBER" << "|"; 
-            std::cout << std::right << std::setw(columnWide) << "DARKEST SECRET" << "|"; 
+
+            std::cout << std::right << std::setw(columnWide) << "INDEX" << "|"; 
+            std::cout << std::right << std::setw(columnWide) << "F.NAME" << "|"; 
+            std::cout << std::right << std::setw(columnWide) << "L.NAME" << "|"; 
+            std::cout << std::right << std::setw(columnWide) << "N.NAME" << "|"; 
             for (int i = 0; i < len; i++) {
                 contacts[i].print();
             }
+        }
+
+        void printById(int id) {
+            for (int i = 0; i < len; i++) {
+                if (contacts[i].id == id) {
+                    std::cout << contacts[i].id << std::endl;
+                    std::cout << contacts[i].firstName << std::endl;
+                    std::cout << contacts[i].lastName << std::endl;
+                    std::cout << contacts[i].nickName << std::endl;
+                    std::cout << contacts[i].phoneNumber << std::endl;
+                    std::cout << contacts[i].darkestSecret << std::endl;
+
+                    return;
+                }
+            }
+            std::cout << "Index '" << id << "' not found!\n";
         }
 
         void seed() {
@@ -143,8 +165,13 @@ int main(void) {
         }
         
         if (input == "SEARCH") {
+            std::string index = NULL;
+            
             phoneBook.printAll();
             std::cout << std::endl;
+
+            std::cout << "INDEX: ";
+            getline(std::cin, index);
             continue;
         }
         
