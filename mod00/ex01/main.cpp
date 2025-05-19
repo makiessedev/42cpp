@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
+#include <sstream>
 
 class Contact {
     public:
@@ -41,8 +43,6 @@ class Contact {
             int columnsNumber = 4;
             int pipesNumber = 6;
             
-            //for (int i = 0; i < (columnWide * columnsNumber) + pipesNumber; i++)
-            //    std::cout << "-";
             std::cout << std::endl;
 
             //
@@ -100,8 +100,6 @@ class PhoneBook {
                     std::cout << contacts[i].firstName << std::endl;
                     std::cout << contacts[i].lastName << std::endl;
                     std::cout << contacts[i].nickName << std::endl;
-                    std::cout << contacts[i].phoneNumber << std::endl;
-                    std::cout << contacts[i].darkestSecret << std::endl;
 
                     return;
                 }
@@ -115,7 +113,6 @@ class PhoneBook {
                 contacts[i] = contact;
             }
             len = 8;
-            oldest_one = 6;
         }
 };
 
@@ -165,13 +162,20 @@ int main(void) {
         }
         
         if (input == "SEARCH") {
-            std::string index = NULL;
+            std::string id_str;
+            int id;
             
             phoneBook.printAll();
             std::cout << std::endl;
-
+            
             std::cout << "INDEX: ";
-            getline(std::cin, index);
+            getline(std::cin, id_str);
+            
+            std::stringstream ss(id_str);
+            ss >> id;
+
+            phoneBook.printById(id);
+
             continue;
         }
         
