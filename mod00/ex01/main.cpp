@@ -3,9 +3,10 @@
 #include <iomanip>
 #include <cstdlib>
 #include <sstream>
+#include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-class PhoneBook {
+/*class PhoneBook {
     public:
 	Contact contacts[8];
         int len;
@@ -67,12 +68,12 @@ class PhoneBook {
             }
             len = 8;
         }
-};
+};*/
 
 int main(void) {
     int index = 1212;
     std::string input;
-    PhoneBook phoneBook;
+    PhonPhoneBook phoneBook;
 
     std::string firstName;
     std::string lastName;

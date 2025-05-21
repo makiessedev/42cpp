@@ -1,13 +1,19 @@
 #include <iostream>
+#include <string>
+#include "Contact.hpp"
 
 class PhoneBook {
 	private:
-		Contact::Contact contants[8];
+		Contact contants[8];
 		int len;
 		int oldest_one;
 	public:
+		PhoneBook();
+
+		Contact* getContacts() const;
+		
 		void insert(Contact &contact);
 		void printAll() const;
-		void printByIndex(index) const;
+		void printByIndex(int index) const;
 		void seed();
 };
