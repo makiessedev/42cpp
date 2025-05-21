@@ -22,7 +22,9 @@ class Contact {
             this->darkestSecret = "";
         }
 
-        Contact(int id, std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret) {
+        Contact(int id, std::string firstName, std::string lastName, 
+			std::string nickName, std::string phoneNumber, 
+			std::string darkestSecret) {
             this->id = id;
             this->firstName = firstName;
             this->lastName = lastName;
