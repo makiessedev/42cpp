@@ -1,4 +1,6 @@
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 class Contact {
 	private:
@@ -11,11 +13,19 @@ class Contact {
 	public:
 		Contact();
 		
-		Contact(int id, std::string fName, std::string lName 
+		Contact(int index, std::string fName, std::string lName, 
 			std::string nName, std::string pNumber, 
-			std::string dSecret;);
+			std::string dSecret);
 				
+		int getIndex() const;
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickName() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestScret() const;
+
 		void fieldFormated(std::string &field) const;
-		void print() const;
+		void print();
+
 };
 

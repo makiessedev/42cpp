@@ -1,19 +1,43 @@
 #include "Contact.hpp"
 
 Contact::Contact(): 
-	id(0), firstName(""), lasName(""), nickName(""), 
+	index(0), firstName(""), lastName(""), nickName(""), 
 	phoneNumber(""), darkestSecret("")
 {}
 
 Contact::Contact(
-	int id, std::string fName, std::string lName, std::string nName, 
+	int index, std::string fName, std::string lName, std::string nName, 
 	std::string pNumber, std::string dSecret
 	): 
-	id(id), firstName(fName), lastName(lName), nickName(nName),
+	index(index), firstName(fName), lastName(lName), nickName(nName),
 	phoneNumber(pNumber), darkestSecret(dSecret)
 {}
 
-void Contact::fieldFormated(std::string &field) {
+int Contact::getIndex() const {
+	return (this->index);
+}
+
+std::string Contact::getFirstName() const {
+	return (this->firstName);
+}
+
+std::string Contact::getLastName() const {
+	return (this->lastName);
+}
+
+std::string Contact::getNickName() const {
+	return (this->nickName);
+}
+
+std::string Contact::getPhoneNumber() const {
+	return (this->phoneNumber);
+}
+
+std::string Contact::getDarkestScret() const {
+	return (this->darkestSecret);
+}
+
+void Contact::fieldFormated(std::string &field) const {
 	int colWide = 10;
 	std::string substr;
 
@@ -22,17 +46,15 @@ void Contact::fieldFormated(std::string &field) {
 	else
 		substr = field.substr(0, 9).append(".");
 
-	std::cout << std::right << std::setw(colWide) << this->firstName 
-		<< "|";
+	std::cout << std::right << std::setw(colWide) << substr << "|";
 }
 
 void Contact::print() {
 	int columnWide = 10;
 	
-	std::cout << std::right << std::setw(columnWide) << this->id << "|";
+	std::cout << std::right << std::setw(columnWide) << this->index << "|";
 	this->fieldFormated(this->firstName);	
 	this->fieldFormated(this->lastName);	
 	this->fieldFormated(this->nickName);	
-	this->fieldFormated(this->phoneNumber);	
-	this->fieldFormated(this->darkestSecret);	
+
 }

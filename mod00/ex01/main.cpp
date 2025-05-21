@@ -3,64 +3,11 @@
 #include <iomanip>
 #include <cstdlib>
 #include <sstream>
-
-class Contact {
-    public:
-        int id;
-        std::string firstName;
-        std::string lastName;
-        std::string nickName;
-        std::string phoneNumber;
-        std::string darkestSecret;
-
-        Contact() {
-            this->id = 0;
-            this->firstName = "";
-            this->lastName = "";
-            this->nickName = "";
-            this->phoneNumber = "";
-            this->darkestSecret = "";
-        }
-
-        Contact(int id, std::string firstName, std::string lastName, 
-			std::string nickName, std::string phoneNumber, 
-			std::string darkestSecret) {
-            this->id = id;
-            this->firstName = firstName;
-            this->lastName = lastName;
-            this->nickName = nickName;
-            this->phoneNumber = phoneNumber;
-            this->darkestSecret = darkestSecret;
-        }
-
-        std::string fieldFormated(std::string &field) {
-            if (field.length() < 10)
-                return (field);
-            
-            return (field.substr(0, 9).append("."));
-        }
-
-        void print() {
-            int columnWide = 10;
-            int columnsNumber = 4;
-            int pipesNumber = 6;
-            
-            std::cout << std::endl;
-
-            //
-
-            std::cout << std::right << std::setw(columnWide) << this->id << "|"; 
-            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->firstName) << "|"; 
-            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->lastName) << "|"; 
-            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->nickName) << "|"; 
-            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->phoneNumber) << "|"; 
-            std::cout << std::right << std::setw(columnWide) << fieldFormated(this->darkestSecret) << "|";
-        }
-};
+#include "Contact.hpp"
 
 class PhoneBook {
     public:
-        Contact contacts[8];
+	Contact contacts[8];
         int len;
         int oldest_one;
 
@@ -90,18 +37,22 @@ class PhoneBook {
             std::cout << std::right << std::setw(columnWide) << "F.NAME" << "|"; 
             std::cout << std::right << std::setw(columnWide) << "L.NAME" << "|"; 
             std::cout << std::right << std::setw(columnWide) << "N.NAME" << "|"; 
+
+	    std::cout << std::endl;
+
             for (int i = 0; i < len; i++) {
                 contacts[i].print();
+	    	std::cout << std::endl;
             }
         }
 
         void printById(int id) {
             for (int i = 0; i < len; i++) {
-                if (contacts[i].id == id) {
-                    std::cout << contacts[i].id << std::endl;
-                    std::cout << contacts[i].firstName << std::endl;
-                    std::cout << contacts[i].lastName << std::endl;
-                    std::cout << contacts[i].nickName << std::endl;
+                if (contacts[i].getIndex() == id) {
+                    std::cout << contacts[i].getIndex() << std::endl;
+                    std::cout << contacts[i].getFirstName() << std::endl;
+                    std::cout << contacts[i].getLastName() << std::endl;
+                    std::cout << contacts[i].getNickName() << std::endl;
 
                     return;
                 }
@@ -119,7 +70,7 @@ class PhoneBook {
 };
 
 int main(void) {
-    int id = 1212;
+    int index = 1212;
     std::string input;
     PhoneBook phoneBook;
 
@@ -138,7 +89,7 @@ int main(void) {
         getline(std::cin, input);
 
         if (input == "ADD") {
-            id++;
+            index++;
             std::cout << "\nfirst name: ";
             std::getline(std::cin, firstName);
             
@@ -154,7 +105,7 @@ int main(void) {
             std::cout << "darkest secret: ";
             std::getline(std::cin, darkestSecret);
 
-            Contact contact(id, firstName, lastName, nickName, phoneNumber, darkestSecret);
+            Contact contact(index, firstName, lastName, nickName, phoneNumber, darkestSecret);
             phoneBook.insert(contact);
             
             std::cout << "\n<Inserted>\n";
@@ -165,7 +116,7 @@ int main(void) {
         
         if (input == "SEARCH") {
             std::string id_str;
-            int id;
+            int index;
             
             phoneBook.printAll();
             std::cout << std::endl;
@@ -174,9 +125,9 @@ int main(void) {
             getline(std::cin, id_str);
             
             std::stringstream ss(id_str);
-            ss >> id;
+            ss >> index;
 
-            phoneBook.printById(id);
+            phoneBook.printById(index);
 
             continue;
         }
