@@ -4,16 +4,16 @@
 
 class PhoneBook {
 	private:
-		Contact contants[8];
+		Contact contacts[8];
 		int len;
 		int oldest_one;
 	public:
 		PhoneBook();
 
-		Contact* getContacts() const;
+		Contact* getContacts();
 		
 		void insert(Contact &contact);
-		void printAll() const;
+		void printAll();
 		void printByIndex(int index) const;
 		void seed();
 };

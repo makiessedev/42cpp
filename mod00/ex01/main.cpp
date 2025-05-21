@@ -73,7 +73,7 @@
 int main(void) {
     int index = 1212;
     std::string input;
-    PhonPhoneBook phoneBook;
+    PhoneBook phoneBook;
 
     std::string firstName;
     std::string lastName;

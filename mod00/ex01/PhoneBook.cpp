@@ -2,7 +2,7 @@
 
 PhoneBook::PhoneBook(): len(0), oldest_one(0) {};
 
-Contact* PhoneBook::getContacts() const {
+Contact* PhoneBook::getContacts() {
 	return (this->contacts);
 }
 
