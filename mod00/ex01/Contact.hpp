@@ -1,3 +1,6 @@
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
+
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -29,3 +32,4 @@ class Contact {
 
 };
 
+#endif

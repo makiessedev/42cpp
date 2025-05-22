@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(): len(0), oldest_one(0) {};
+PhoneBook::PhoneBook(): len(0), oldest_one(0), index(100) {};
 
 Contact* PhoneBook::getContacts() {
 	return (this->contacts);
@@ -39,9 +39,9 @@ void PhoneBook::printAll() {
         }
 }
 
-void PhoneBook::printById(int id) {
+void PhoneBook::printByIndex(int index) const {
 	for (int i = 0; i < len; i++) {
-		if (contacts[i].getIndex() == id) {
+		if (contacts[i].getIndex() == index) {
 			std::cout << contacts[i].getIndex() << std::endl;
 			std::cout << contacts[i].getFirstName() << std::endl;
 			std::cout << contacts[i].getLastName() << std::endl;
@@ -49,7 +49,7 @@ void PhoneBook::printById(int id) {
 
                     	return;                }
        	}
-        std::cout << "Index '" << id << "' not found!\n";
+        std::cout << "Index '" << index << "' not found!\n";
 }
 
 void PhoneBook::seed() {
@@ -59,3 +59,72 @@ void PhoneBook::seed() {
         }
         len = 8;
 }
+
+void PhoneBook::add() {
+	std::string firstName;
+    	std::string lastName;
+    	std::string nickName;
+    	std::string phoneNumber;
+    	std::string darkestSecret;
+	
+        std::cout << "\nfirst name: ";
+        std::getline(std::cin, firstName);
+            
+        std::cout << "last name: ";
+        std::getline(std::cin, lastName);
+            
+        std::cout << "nick name: ";
+        std::getline(std::cin, nickName);
+            
+        std::cout << "phone number: ";
+        std::getline(std::cin, phoneNumber);
+            
+        std::cout << "darkest secret: ";
+        std::getline(std::cin, darkestSecret);
+
+        Contact contact(this->index, firstName, lastName, nickName,
+			    phoneNumber, darkestSecret);
+        this.insert(contact);
+            
+	this.index++;
+        std::cout << "\n<Inserted>\n";
+}
+
+void PhoneBook::init() {
+    int index = 100;
+    std::string input;
+    
+    while (true) {
+        std::cout << "Wating for command: (ADD, SEARCH, EXIT)\n";
+        std::cout << "---------------------------------------\n";
+
+        std::cout << "command: ";
+
+        getline(std::cin, input);
+
+        if (input == "ADD") {
+            this->add(&phoneBook, &index);
+
+            std::system("clear");
+            continue;
+        }
+        
+        if (input == "SEARCH") {
+		search(&phoneBook);
+		continue;
+        }
+        
+        if (input == "EXIT")
+            return (0);
+
+        if (input == "seed") {
+            phoneBook.seed();
+            continue;
+        }
+
+        std::system("clear");
+    }
+
+    return (0);
+}
+
