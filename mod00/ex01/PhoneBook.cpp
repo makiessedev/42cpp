@@ -84,14 +84,29 @@ void PhoneBook::add() {
 
         Contact contact(this->index, firstName, lastName, nickName,
 			    phoneNumber, darkestSecret);
-        this.insert(contact);
+        this->insert(contact);
             
-	this.index++;
+	this->index++;
         std::cout << "\n<Inserted>\n";
 }
 
+void PhoneBook::search() {
+        std::string id_str;
+        int index;
+            
+        this->printAll();
+        std::cout << std::endl;
+            
+        std::cout << "INDEX: ";
+        getline(std::cin, id_str);
+            
+	std::stringstream ss(id_str);
+	ss >> index;
+
+	this->printByIndex(index);
+}
+
 void PhoneBook::init() {
-    int index = 100;
     std::string input;
     
     while (true) {
@@ -103,28 +118,26 @@ void PhoneBook::init() {
         getline(std::cin, input);
 
         if (input == "ADD") {
-            this->add(&phoneBook, &index);
+            this->add();
 
             std::system("clear");
             continue;
         }
         
         if (input == "SEARCH") {
-		search(&phoneBook);
+		this->search();
 		continue;
         }
         
         if (input == "EXIT")
-            return (0);
+            return ;
 
         if (input == "seed") {
-            phoneBook.seed();
+            this->seed();
             continue;
         }
 
         std::system("clear");
     }
-
-    return (0);
 }
 

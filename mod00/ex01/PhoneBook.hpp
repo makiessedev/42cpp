@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <cstdlib>
 #include "Contact.hpp"
 
 class PhoneBook {
@@ -19,8 +21,9 @@ class PhoneBook {
 		void insert(Contact &contact);
 		void printAll();
 		void printByIndex(int index) const;
-		void add(int *index);	
+		void add();	
 		void init();
+		void search();
 		//
 		// dont forget to remove
 		//
