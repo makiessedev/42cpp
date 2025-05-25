@@ -29,7 +29,6 @@ class Contact {
 
 		void fieldFormated(std::string &field) const;
 		void print();
-
 };
 
 #endif

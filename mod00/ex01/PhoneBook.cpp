@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <cctype>
 
 PhoneBook::PhoneBook(): len(0), oldest_one(0), index(100) {};
 
@@ -49,7 +50,7 @@ void PhoneBook::printByIndex(int index) const {
 
                     	return;                }
        	}
-        std::cout << "Index '" << index << "' not found!\n";
+        std::cout << "Invalid Index!\n\n";
 }
 
 void PhoneBook::seed() {
@@ -60,6 +61,29 @@ void PhoneBook::seed() {
         len = 8;
 }
 
+
+bool PhoneBook::isValidNumber(std::string &number) {
+	if (number.empty()) return (false);
+	for (size_t i = 0; i < number.length(); i++) 
+		if (std::isalpha(number[i])) return (false);
+	return (true);
+}
+
+bool PhoneBook::isValidStringField(std::string &field) {
+	if (field.length() >= 2)
+		return (true);
+	return (false);
+}
+	
+bool PhoneBook::getAndValidateInput(std::string &field) {
+	std::getline(std::cin, field);
+	if (!this->isValidStringField(field)) {
+		std::cout << "Invalid field\n\n";
+		return (false);
+	}
+	return (true);
+}
+
 void PhoneBook::add() {
 	std::string firstName;
     	std::string lastName;
@@ -68,19 +92,26 @@ void PhoneBook::add() {
     	std::string darkestSecret;
 	
         std::cout << "\nfirst name: ";
-        std::getline(std::cin, firstName);
+        if (this->getAndValidateInput(firstName) == false)
+		return ;
             
         std::cout << "last name: ";
-        std::getline(std::cin, lastName);
+        if (this->getAndValidateInput(lastName) == false)
+        	return ;
             
         std::cout << "nick name: ";
-        std::getline(std::cin, nickName);
-            
+        if (this->getAndValidateInput(nickName) == false)
+     		return ; 
+	
         std::cout << "phone number: ";
-        std::getline(std::cin, phoneNumber);
+	if (!this->isValidNumber(phoneNumber)) {
+		std::cout << "Invalid field\n\n";
+		return ;
+	}
             
         std::cout << "darkest secret: ";
-        std::getline(std::cin, darkestSecret);
+        if (this->getAndValidateInput(darkestSecret) == false)
+        	return ;
 
         Contact contact(this->index, firstName, lastName, nickName,
 			    phoneNumber, darkestSecret);
@@ -133,7 +164,6 @@ void PhoneBook::init() {
 		switch (getCommand(input)) {
         		case CMD_ADD:
             			this->add();
-				std::system("clear");
             			break;
         		case CMD_SEARCH:
 				this->search();

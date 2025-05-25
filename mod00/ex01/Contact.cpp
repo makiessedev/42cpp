@@ -58,3 +58,4 @@ void Contact::print() {
 	this->fieldFormated(this->nickName);	
 
 }
+

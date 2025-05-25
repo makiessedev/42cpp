@@ -27,6 +27,9 @@ class PhoneBook {
 		void init();
 		void search();
 		Command getCommand(std::string& input); 
+		bool isValidNumber(std::string &number);
+		bool isValidStringField(std::string &string);
+		bool getAndValidateInput(std::string &field);
 		//
 		// dont forget to remove
 		//
