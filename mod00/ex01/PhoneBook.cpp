@@ -104,14 +104,14 @@ void PhoneBook::add() {
      		return ; 
 	
         std::cout << "phone number: ";
+	std::getline(std::cin, phoneNumber);
 	if (!this->isValidNumber(phoneNumber)) {
 		std::cout << "Invalid field\n\n";
 		return ;
 	}
             
         std::cout << "darkest secret: ";
-        if (this->getAndValidateInput(darkestSecret) == false)
-        	return ;
+	std::getline(std::cin, darkestSecret);
 
         Contact contact(this->index, firstName, lastName, nickName,
 			    phoneNumber, darkestSecret);
