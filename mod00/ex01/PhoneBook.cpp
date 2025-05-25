@@ -106,38 +106,47 @@ void PhoneBook::search() {
 	this->printByIndex(index);
 }
 
+
+Command PhoneBook::getCommand(std::string& input) {
+	if (input == "ADD")
+		return (CMD_ADD);
+	if (input == "SEARCH")
+		return (CMD_SEARCH);	
+	if (input == "EXIT")
+		return (CMD_EXIT);
+	if (input == "seed")
+		return (CMD_SEED);
+	return (CMD_INVALID);
+}
+
 void PhoneBook::init() {
-    std::string input;
+	std::string input;
     
-    while (true) {
-        std::cout << "Wating for command: (ADD, SEARCH, EXIT)\n";
-        std::cout << "---------------------------------------\n";
+	while (true) {
+        	std::cout << "Wating for command: (ADD, SEARCH, EXIT)\n";
+        	std::cout << "---------------------------------------\n";
 
-        std::cout << "command: ";
+        	std::cout << "command: ";
 
-        getline(std::cin, input);
+        	getline(std::cin, input);
 
-        if (input == "ADD") {
-            this->add();
-
-            std::system("clear");
-            continue;
-        }
-        
-        if (input == "SEARCH") {
-		this->search();
-		continue;
-        }
-        
-        if (input == "EXIT")
-            return ;
-
-        if (input == "seed") {
-            this->seed();
-            continue;
-        }
-
-        std::system("clear");
-    }
+		switch (getCommand(input)) {
+        		case CMD_ADD:
+            			this->add();
+				std::system("clear");
+            			break;
+        		case CMD_SEARCH:
+				this->search();
+				break;
+			case CMD_EXIT:
+            			return ;
+        		case CMD_SEED:
+            			this->seed();
+            			break;
+			case CMD_INVALID:
+			default:
+				break;
+       		}
+    	}
 }
 
