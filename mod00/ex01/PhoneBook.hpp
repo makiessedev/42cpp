@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include "Contact.hpp"
 
-enum Command {CMD_ADD, CMD_SEARCH, CMD_EXIT, CMD_SEED, CMD_INVALID};
+enum Command {CMD_ADD, CMD_SEARCH, CMD_EXIT, CMD_INVALID};
 
 class PhoneBook {
 	private:
@@ -30,10 +30,6 @@ class PhoneBook {
 		bool isValidNumber(std::string &number);
 		bool isValidStringField(std::string &string);
 		bool getAndValidateInput(std::string &field);
-		//
-		// dont forget to remove
-		//
-		void seed();
 };
 
 #endif

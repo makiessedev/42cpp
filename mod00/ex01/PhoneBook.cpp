@@ -47,20 +47,13 @@ void PhoneBook::printByIndex(int index) const {
 			std::cout << contacts[i].getFirstName() << std::endl;
 			std::cout << contacts[i].getLastName() << std::endl;
 			std::cout << contacts[i].getNickName() << std::endl;
+			std::cout << contacts[i].getPhoneNumber() << std::endl;
+			std::cout << contacts[i].getDarkestSecret() << std::endl;
 
                     	return;                }
        	}
         std::cout << "Invalid Index!\n\n";
 }
-
-void PhoneBook::seed() {
-	for (int i = 0; i < 8; i++){
-		Contact contact(i, "Makiesse", "Morais", "Meick", "000", "d");
-                contacts[i] = contact;
-        }
-        len = 8;
-}
-
 
 bool PhoneBook::isValidNumber(std::string &number) {
 	if (number.empty()) return (false);
@@ -145,8 +138,6 @@ Command PhoneBook::getCommand(std::string& input) {
 		return (CMD_SEARCH);	
 	if (input == "EXIT")
 		return (CMD_EXIT);
-	if (input == "seed")
-		return (CMD_SEED);
 	return (CMD_INVALID);
 }
 
@@ -170,9 +161,6 @@ void PhoneBook::init() {
 				break;
 			case CMD_EXIT:
             			return ;
-        		case CMD_SEED:
-            			this->seed();
-            			break;
 			case CMD_INVALID:
 			default:
 				break;

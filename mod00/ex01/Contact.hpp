@@ -25,7 +25,7 @@ class Contact {
 		std::string getLastName() const;
 		std::string getNickName() const;
 		std::string getPhoneNumber() const;
-		std::string getDarkestScret() const;
+		std::string getDarkestSecret() const;
 
 		void fieldFormated(std::string &field) const;
 		void print();
