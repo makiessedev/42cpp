@@ -2,14 +2,18 @@
 #include <iostream>
 #include <cstdlib>
 
+#ifndef _ZOMBIE_H
+# define _ZOMBIE_H
 class Zombie {
 private:
 	std::string name;
 public:
 	Zombie();
-	Zombie(std::string &name); 
+	Zombie(std::string name); 
+	~Zombie();
 
 	void setName(std::string name);
 	void announce(void);
-	Zombie* newZombie(std::string name);
+
 };
+#endif

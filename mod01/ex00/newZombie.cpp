@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
-Zombie* Zombie::newZombie(std::string name) {
-	Zombie *z = malloc(sizeof(Zombie));
-	z->setName(name);
-	return (z);
+Zombie* newZombie(std::string name) {
+	Zombie *zombie = new Zombie;
+	zombie->setName(name);
+	return (zombie);
 }
