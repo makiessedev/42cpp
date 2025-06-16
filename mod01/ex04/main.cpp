@@ -5,29 +5,46 @@
 
 std::string replace(std::string target, std::string replaced, std::string line) {
 	std::string newLine;
-	std::size_t pos;
 
 	if (target == replaced)
 		return line;
 	
-	pos = line.find(target);	
+	/*pos = line.find(target);	
 
 	if (pos == std::string::npos)
 		return line;
+	*/
 
-	int start = 0;
-	int i = 0;
-	while (pos != std::string::npos) {
-		i += pos;
-		newLine = line.substr(start, pos - 1);
-		newLine
-			.append(replaced)
-			.append(line.substr(pos + target.length()));
-		line = newLine;
-		pos = line.find(target, i + 1);
-		std::cout << "here\n";
+	size_t i = 0;
+	size_t j = 0;
+	size_t t_len = target.length();
+	size_t r_len = replaced.length();
+	std::string new_line = "";
+	while (line[i]) {
+		j = 0;
+		if (line.substr(i, t_len) == target) {
+			/*while (line[i] == target[j]) {
+				if ((target_len - 1) == j) {
+					//new_line = line.substr(0, i - target_len + 1);
+					new_line.append(replaced);	
+					std::cout << new_line << std::endl;
+					break ;
+				}
+				if (line[i+1] != target[j])
+					break;
+				i++;
+				j++;
+			}*/
+			new_line.append(replaced);
+			i += t_len;
+		}
+		std::string st = line.substr(i, 1);	
+		new_line.append(st); 
+		i++;
 	}	
-	return newLine;
+
+	std::cout << new_line << std::endl;
+	return new_line;
 }
 
 int main(int ac, char **av) {
