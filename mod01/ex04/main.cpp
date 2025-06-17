@@ -4,46 +4,25 @@
 #include <cstring>
 
 std::string replace(std::string target, std::string replaced, std::string line) {
-	std::string newLine;
+	int i;
+	int tar_len;
+	std::string new_line;
 
 	if (target == replaced)
 		return line;
 	
-	/*pos = line.find(target);	
-
-	if (pos == std::string::npos)
-		return line;
-	*/
-
-	size_t i = 0;
-	size_t j = 0;
-	size_t t_len = target.length();
-	size_t r_len = replaced.length();
-	std::string new_line = "";
+	i = 0;
+	tar_len = target.length();
+	new_line = "";
 	while (line[i]) {
-		j = 0;
-		if (line.substr(i, t_len) == target) {
-			/*while (line[i] == target[j]) {
-				if ((target_len - 1) == j) {
-					//new_line = line.substr(0, i - target_len + 1);
-					new_line.append(replaced);	
-					std::cout << new_line << std::endl;
-					break ;
-				}
-				if (line[i+1] != target[j])
-					break;
-				i++;
-				j++;
-			}*/
+		if (line.substr(i, tar_len) == target) {
 			new_line.append(replaced);
-			i += t_len;
+			i += tar_len;
 		}
-		std::string st = line.substr(i, 1);	
-		new_line.append(st); 
+		new_line.append(line.substr(i, 1)); 
 		i++;
 	}	
 
-	std::cout << new_line << std::endl;
 	return new_line;
 }
 
@@ -69,7 +48,6 @@ int main(int ac, char **av) {
 		return (1);
 	}	
 	
-
 	while (getline(file, line)) {
 		std::string newLine = replace(str1, str2, line);
 		file_replace << newLine << std::endl;

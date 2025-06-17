@@ -1,8 +1,8 @@
-index:0;Bmount:42; | index:0;Bmount:42;creBted | index:0;Bmount:42;creBted
-index:1;Bmount:54; | index:1;Bmount:54;creBted | index:1;Bmount:54;creBted
-[20250608_040348] index:2;Bmount:957;creBted | [20250608_040348] index:2;Bmount:957;creBted
-[20250608_040348] index:3;Bmount:432;creBted | [20250608_040348] index:3;Bmount:432;creBted
-[20250608_040348] index:4;Bmount:1234;creBted | [20250608_040348] index:4;Bmount:1234;creBted
-[20250608_040348] index:5;Bmount:0;creBted | [20250608_040348] index:5;Bmount:0;creBted
-[20250608_040348] index:6;Bmount:754;creBted | [20250608_040348] index:6;Bmount:754;creBted
-[20250608_040348] index:7;Bmount:16576;creBted | [20250608_040348] index:7;Bmount:16576;creBted
+index__0;amount__42; | index__0;amount__42;created | index__0;amount__42;created
+index__1;amount__54; | index__1;amount__54;created | index__1;amount__54;created
+[20250608_040348] index__2;amount__957;created | [20250608_040348] index__2;amount__957;created
+[20250608_040348] index__3;amount__432;created | [20250608_040348] index__3;amount__432;created
+[20250608_040348] index__4;amount__1234;created | [20250608_040348] index__4;amount__1234;created
+[20250608_040348] index__5;amount__0;created | [20250608_040348] index__5;amount__0;created
+[20250608_040348] index__6;amount__754;created | [20250608_040348] index__6;amount__754;created
+[20250608_040348] index__7;amount__16576;created | [20250608_040348] index__7;amount__16576;created

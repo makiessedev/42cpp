@@ -1,2 +1,2 @@
 run:
-	c++ -Wall -Wextra -std=c++98 *.cpp
+	c++ -Wall -Wextra -Werror -std=c++98 *.cpp
