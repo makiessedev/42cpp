@@ -17,11 +17,9 @@ void Harl::error(void) {
 }
 
 void Harl::complain(std::string level) {
-	typedef void (Harl::*funcPtr)();
-
 	struct harl_t {
 		std::string level;
-		funcPtr func;
+		void (Harl::*func)();
 	}; 
 
 	static const harl_t harl[] = {
