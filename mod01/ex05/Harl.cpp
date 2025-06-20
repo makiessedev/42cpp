@@ -21,7 +21,7 @@ void Harl::complain(std::string level) {
 
 	struct harl_t {
 		std::string level;
-		funcPtr void (Harl::*funcPtr)();
+		funcPtr func;
 	}; 
 
 	static const harl_t harl[] = {
